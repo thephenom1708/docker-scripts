@@ -1,0 +1,6 @@
+docker run --rm -it -v /shared-vol --name ccf ubuntu:wce bash
+
+docker run --rm -it --volumes-from ccf --name miniccf ubuntu:wce bash
+
+docker run --rm -it --volumes-from ccf --name itlab ubuntu:wce bash
+

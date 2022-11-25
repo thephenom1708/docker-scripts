@@ -1,0 +1,17 @@
+# Create some directory to store data volume
+mkdir docker-vol
+pwd
+
+docker run -it -v <absolute-path-to-docker-vol>:/shared-vol ubuntu:wce bash
+cd shared-vol
+nano data.txt
+exit
+
+
+# Host shell
+cd docker-vol
+ls                 # Check the data.txt file exists even after container is exited
+
+
+
+# Data to the volume can be updated from both container and host

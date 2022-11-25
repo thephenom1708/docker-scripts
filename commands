@@ -37,3 +37,11 @@ docker build -t <image-name> <dir-path-to-dockerfile>
 
 # Connecting to running container's shell
 docker exec -it <container-id> bash
+
+
+# Image specs
+docker image inspect <image-name>
+
+
+# Container specs
+docker specs <container-id>

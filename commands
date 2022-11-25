@@ -1,0 +1,39 @@
+# Check Version
+
+docker -v
+
+# Search docker image on dockerhub
+docker search <image-name>
+
+# Pull image from dockerhub
+docker pull <image-name>
+
+# Commit and Push docker image to docker hub
+docker commit <container> <image-name>
+docker push <image-name>
+
+
+# Listing commands
+docker images            # images
+docker ps -a             # All containers stopped/running
+docker network ls        # All networks
+
+
+# Deleting Image
+docker rmi <image-id>
+
+
+# Deleting container
+docker stop <container-id>        # Exits the running container gracefully
+docker kill <container-id>        # Kill running container immediately
+docker rm <container-id>          # Remove stopped/exited container
+
+
+# Running a docker container
+docker run --name <container-name> <image-name> <entry-process>
+
+# Build a docker image from Dockerfile
+docker build -t <image-name> <dir-path-to-dockerfile>
+
+# Connecting to running container's shell
+docker exec -it <container-id> bash

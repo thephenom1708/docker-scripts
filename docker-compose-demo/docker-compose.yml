@@ -1,0 +1,42 @@
+version: "3.9"
+
+networks:
+  express:
+  data:
+
+services:
+  client:
+    container_name: client
+    restart: always
+    build: ./client
+    ports: 
+      - "3000:3000"
+    networks:
+      - express
+    depends_on:
+      - server
+
+  server:
+    container_name: server
+    restart: always
+    build: ./api
+    ports:
+      - "4000:4000"
+    depends_on:
+      - mongo
+    networks:
+      - express
+      - data
+
+  mongo:
+    container_name: mongo
+    image: mongo
+    restart: always
+    expose:
+      - "27017"
+    volumes:
+      - ./data:/data/db
+    ports:
+       - "27017:27017"
+    networks:
+      - data

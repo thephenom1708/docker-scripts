@@ -1,0 +1,11 @@
+docker run -it ubuntu bash
+
+# Inside Container
+apt update
+apt install nano
+apt install netcat
+apt install iputils-ping
+exit
+
+
+docker commit <container-id> ubuntu:wce

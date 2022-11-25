@@ -1,0 +1,15 @@
+docker search alpine
+
+docker pull alpine
+
+docker run -it alpine
+
+# Inside Container
+apk update
+apk add nano
+nano file.txt
+exit
+
+docker login -u <username>
+docker commit <container-id> <username>/<image-name>
+docker push <username>/<image-name>

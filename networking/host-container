@@ -1,0 +1,23 @@
+docker run --rm -it -p 45678:45678 -p 45679:45679 --name chatserver ubuntu:wce bash
+
+# Inside Container
+nc -lp 45678 | nc -lp 45679
+
+
+
+# Host shell-1
+nc localhost 45678
+
+
+
+
+# Host shell-2
+nc localhost 45679
+
+
+
+Shell-1:45678 -> container:45678 -> container:45679 -> shell-2:45679
+
+
+# Related Commands
+docker port <container-id / container-name> # To check the ports exposed by container

@@ -1,0 +1,40 @@
+docker network ls
+
+- bridge (default)
+- host  (Without network isolation)
+- none  (No network)
+
+
+docker network create wce
+docker network ls
+
+# Container 1 - CCF Server on network wce
+docker run --rm -it --net wce --name ccfserver ubuntu:wce bash
+ping ccfserver                   # Sending Traffic to self
+
+
+# Container 2 - Mini-CCF Server
+docker run --rm -it --name miniccsfserver ubuntu:wce bash
+ping miniccsfserver                # Cannot send traffic as no network
+exit
+
+
+# Container 3 - Mini-CCF Server on network wce
+docker run --rm -it --net wce --name miniccsfserver ubuntu:wce bash
+ping ccfserver  # Sending traffic via wce TCP network
+
+
+# Host shell
+docker network create wce-it
+docker network ls
+
+docker network connect wce-it ccfserver
+
+
+# Container 4 - IT Lab server on network wce-it
+docker run --rm -it --net wce-it --name itlabserver ubuntu:wce bash
+ping itlabserver
+ping ccfserver
+ping miniccfserver             # Traffic not allowed as miniccfserver is not on wce-it network
+
+
